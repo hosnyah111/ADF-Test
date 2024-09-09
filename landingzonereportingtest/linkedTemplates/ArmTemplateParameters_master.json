@@ -1,0 +1,114 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "landingzonereportingtest"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"DataverseLS_servicePrincipalCredential": {
+			"value": ""
+		},
+		"Dynamics1_servicePrincipalCredential": {
+			"value": ""
+		},
+		"Dynamics2_servicePrincipalCredential": {
+			"value": ""
+		},
+		"Dynamics20240722_servicePrincipalCredential": {
+			"value": ""
+		},
+		"Dynamics20240723_servicePrincipalCredential": {
+			"value": ""
+		},
+		"Dynamics20240724_servicePrincipalCredential": {
+			"value": ""
+		},
+		"Dynamics3_servicePrincipalCredential": {
+			"value": ""
+		},
+		"DynamicsCrm1_servicePrincipalCredential": {
+			"value": ""
+		},
+		"DynamicsCrm2_servicePrincipalCredential": {
+			"value": ""
+		},
+		"DynamicsCrmoffice365_password": {
+			"value": ""
+		},
+		"OData1_servicePrincipalKey": {
+			"value": ""
+		},
+		"ODataPROD_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://acceptancelanding.dfs.core.windows.net/"
+		},
+		"DataverseLS_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics1_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics2_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics20240722_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics20240723_properties_typeProperties_servicePrincipalId": {
+			"value": "758b5f81-501a-4e1b-b2ec-d4384d8ada34"
+		},
+		"Dynamics20240724_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics3_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrm1_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrm2_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrmoffice365_properties_typeProperties_username": {
+			"value": "Saba_Guset@sabamedical.com"
+		},
+		"OData1_properties_typeProperties_url": {
+			"value": "https://sabaacceptance.sandbox.operations.dynamics.com/data"
+		},
+		"OData1_properties_typeProperties_tenant": {
+			"value": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+		},
+		"OData1_properties_typeProperties_aadResourceId": {
+			"value": "https://sabaacceptance.sandbox.operations.dynamics.com/"
+		},
+		"OData1_properties_typeProperties_servicePrincipalId": {
+			"value": " b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"ODataPROD_properties_typeProperties_url": {
+			"value": "https://erp-sabamedical.operations.dynamics.com/data"
+		},
+		"ODataPROD_properties_typeProperties_tenant": {
+			"value": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+		},
+		"ODataPROD_properties_typeProperties_aadResourceId": {
+			"value": "https://erp-sabamedical.operations.dynamics.com/"
+		},
+		"ODataPROD_properties_typeProperties_servicePrincipalId": {
+			"value": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

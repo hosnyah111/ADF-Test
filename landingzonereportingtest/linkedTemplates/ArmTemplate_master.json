@@ -1,0 +1,293 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "landingzonereportingtest"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"DataverseLS_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DataverseLS'"
+		},
+		"Dynamics1_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics1'"
+		},
+		"Dynamics2_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics2'"
+		},
+		"Dynamics20240722_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics20240722'"
+		},
+		"Dynamics20240723_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics20240723'"
+		},
+		"Dynamics20240724_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics20240724'"
+		},
+		"Dynamics3_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics3'"
+		},
+		"DynamicsCrm1_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DynamicsCrm1'"
+		},
+		"DynamicsCrm2_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DynamicsCrm2'"
+		},
+		"DynamicsCrmoffice365_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DynamicsCrmoffice365'"
+		},
+		"OData1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'OData1'"
+		},
+		"ODataPROD_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ODataPROD'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://acceptancelanding.dfs.core.windows.net/"
+		},
+		"DataverseLS_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics20240722_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics20240723_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "758b5f81-501a-4e1b-b2ec-d4384d8ada34"
+		},
+		"Dynamics20240724_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics3_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrm1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrm2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrmoffice365_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "Saba_Guset@sabamedical.com"
+		},
+		"OData1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sabaacceptance.sandbox.operations.dynamics.com/data"
+		},
+		"OData1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+		},
+		"OData1_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "https://sabaacceptance.sandbox.operations.dynamics.com/"
+		},
+		"OData1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": " b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"ODataPROD_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://erp-sabamedical.operations.dynamics.com/data"
+		},
+		"ODataPROD_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+		},
+		"ODataPROD_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "https://erp-sabamedical.operations.dynamics.com/"
+		},
+		"ODataPROD_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "landingzonereportingtest_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"DataverseLS_servicePrincipalCredential": {
+						"value": "[parameters('DataverseLS_servicePrincipalCredential')]"
+					},
+					"Dynamics1_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics1_servicePrincipalCredential')]"
+					},
+					"Dynamics2_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics2_servicePrincipalCredential')]"
+					},
+					"Dynamics20240722_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics20240722_servicePrincipalCredential')]"
+					},
+					"Dynamics20240723_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics20240723_servicePrincipalCredential')]"
+					},
+					"Dynamics20240724_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics20240724_servicePrincipalCredential')]"
+					},
+					"Dynamics3_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics3_servicePrincipalCredential')]"
+					},
+					"DynamicsCrm1_servicePrincipalCredential": {
+						"value": "[parameters('DynamicsCrm1_servicePrincipalCredential')]"
+					},
+					"DynamicsCrm2_servicePrincipalCredential": {
+						"value": "[parameters('DynamicsCrm2_servicePrincipalCredential')]"
+					},
+					"DynamicsCrmoffice365_password": {
+						"value": "[parameters('DynamicsCrmoffice365_password')]"
+					},
+					"OData1_servicePrincipalKey": {
+						"value": "[parameters('OData1_servicePrincipalKey')]"
+					},
+					"ODataPROD_servicePrincipalKey": {
+						"value": "[parameters('ODataPROD_servicePrincipalKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"DataverseLS_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('DataverseLS_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Dynamics1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Dynamics2_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics2_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Dynamics20240722_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics20240722_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Dynamics20240723_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics20240723_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Dynamics20240724_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics20240724_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Dynamics3_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics3_properties_typeProperties_servicePrincipalId')]"
+					},
+					"DynamicsCrm1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('DynamicsCrm1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"DynamicsCrm2_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('DynamicsCrm2_properties_typeProperties_servicePrincipalId')]"
+					},
+					"DynamicsCrmoffice365_properties_typeProperties_username": {
+						"value": "[parameters('DynamicsCrmoffice365_properties_typeProperties_username')]"
+					},
+					"OData1_properties_typeProperties_url": {
+						"value": "[parameters('OData1_properties_typeProperties_url')]"
+					},
+					"OData1_properties_typeProperties_tenant": {
+						"value": "[parameters('OData1_properties_typeProperties_tenant')]"
+					},
+					"OData1_properties_typeProperties_aadResourceId": {
+						"value": "[parameters('OData1_properties_typeProperties_aadResourceId')]"
+					},
+					"OData1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('OData1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ODataPROD_properties_typeProperties_url": {
+						"value": "[parameters('ODataPROD_properties_typeProperties_url')]"
+					},
+					"ODataPROD_properties_typeProperties_tenant": {
+						"value": "[parameters('ODataPROD_properties_typeProperties_tenant')]"
+					},
+					"ODataPROD_properties_typeProperties_aadResourceId": {
+						"value": "[parameters('ODataPROD_properties_typeProperties_aadResourceId')]"
+					},
+					"ODataPROD_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ODataPROD_properties_typeProperties_servicePrincipalId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "landingzonereportingtest_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'landingzonereportingtest_ArmTemplate_0')]"
+			]
+		}
+	]
+}

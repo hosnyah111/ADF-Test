@@ -1,0 +1,935 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "landingzonereportingtest"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"DataverseLS_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DataverseLS'"
+		},
+		"Dynamics1_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics1'"
+		},
+		"Dynamics2_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics2'"
+		},
+		"Dynamics20240722_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics20240722'"
+		},
+		"Dynamics20240723_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics20240723'"
+		},
+		"Dynamics20240724_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics20240724'"
+		},
+		"Dynamics3_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics3'"
+		},
+		"DynamicsCrm1_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DynamicsCrm1'"
+		},
+		"DynamicsCrm2_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'DynamicsCrm2'"
+		},
+		"DynamicsCrmoffice365_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DynamicsCrmoffice365'"
+		},
+		"OData1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'OData1'"
+		},
+		"ODataPROD_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ODataPROD'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://acceptancelanding.dfs.core.windows.net/"
+		},
+		"DataverseLS_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics20240722_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics20240723_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "758b5f81-501a-4e1b-b2ec-d4384d8ada34"
+		},
+		"Dynamics20240724_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"Dynamics3_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrm1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrm2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"DynamicsCrmoffice365_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "Saba_Guset@sabamedical.com"
+		},
+		"OData1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sabaacceptance.sandbox.operations.dynamics.com/data"
+		},
+		"OData1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+		},
+		"OData1_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "https://sabaacceptance.sandbox.operations.dynamics.com/"
+		},
+		"OData1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": " b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		},
+		"ODataPROD_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://erp-sabamedical.operations.dynamics.com/data"
+		},
+		"ODataPROD_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+		},
+		"ODataPROD_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "https://erp-sabamedical.operations.dynamics.com/"
+		},
+		"ODataPROD_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/copy to dev')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "ForEach",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Lookup",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Lookup').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Copy data to dev",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "ODataSource",
+											"httpRequestTimeout": "00:05:00"
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings",
+												"copyBehavior": "FlattenHierarchy"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false
+									},
+									"inputs": [
+										{
+											"referenceName": "ODataResource1",
+											"type": "DatasetReference",
+											"parameters": {
+												"file_path": {
+													"value": "@concat(item().Table_Name, '?cross-company=true')",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DelimitedText1",
+											"type": "DatasetReference",
+											"parameters": {
+												"container": "dev",
+												"file_name": {
+													"value": "@concat(item().Table_Name, '-', utcnow('yyyyMMddHHmmss'))\n",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"name": "Get Metadata",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "Excel1",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"itemName"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					},
+					{
+						"name": "Lookup",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"dataset": {
+								"referenceName": "Excel1",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-08-13T08:34:17Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Excel1')]",
+				"[concat(variables('factoryId'), '/datasets/ODataResource1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/copy to prod')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "ForEach",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Lookup",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Lookup').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Copy data to prod",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "ODataSource",
+											"httpRequestTimeout": "00:05:00"
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings",
+												"copyBehavior": "FlattenHierarchy"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false
+									},
+									"inputs": [
+										{
+											"referenceName": "ODataResource1",
+											"type": "DatasetReference",
+											"parameters": {
+												"file_path": {
+													"value": "@concat(item().Table_Name, '?cross-company=true')",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DelimitedText1",
+											"type": "DatasetReference",
+											"parameters": {
+												"container": "prod",
+												"file_name": {
+													"value": "@concat(item().Table_Name, '-', utcnow('yyyyMMddHHmmss'))\n",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"name": "Get Metadata",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "Excel1",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"itemName"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					},
+					{
+						"name": "Lookup",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"dataset": {
+								"referenceName": "Excel1",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-08-13T12:20:41Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Excel1')]",
+				"[concat(variables('factoryId'), '/datasets/ODataResource1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ODataSource",
+								"httpRequestTimeout": "00:05:00"
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings",
+									"copyBehavior": "FlattenHierarchy"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "ODataResource1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2024-08-12T14:47:45Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ODataResource1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"container": {
+						"type": "String"
+					},
+					"file_name": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().file_name",
+							"type": "Expression"
+						},
+						"container": {
+							"value": "@dataset().container",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DynamicsEntity1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Dynamics20240724",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DynamicsEntity",
+				"schema": [],
+				"typeProperties": {
+					"entityName": "CustomersV3"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Dynamics20240724')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Table_Name.xlsx",
+						"container": "anycont"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ODataResource1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "OData1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"file_path": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "ODataResource",
+				"schema": [],
+				"typeProperties": {
+					"path": {
+						"value": "@dataset().file_path",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/OData1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataverseLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "CommonDataServiceForApps",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://operations-sabaacceptance.crm4.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('DataverseLS_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('DataverseLS_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dynamics1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://sabaacceptance.sandbox.operations.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('Dynamics1_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics1_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dynamics2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://sabaacceptance.sandbox.operations.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('Dynamics2_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics2_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dynamics20240722')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://operations-sabaacceptance.crm4.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('Dynamics20240722_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics20240722_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dynamics20240723')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://operations-sabaacceptance.crm4.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('Dynamics20240723_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics20240723_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dynamics20240724')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://operations-sabaacceptance.crm4.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('Dynamics20240724_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics20240724_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dynamics3')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://sabaacceptance.sandbox.operations.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('Dynamics3_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('Dynamics3_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DynamicsCrm1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "DynamicsCrm",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://sabaacceptance.sandbox.operations.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('DynamicsCrm1_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('DynamicsCrm1_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DynamicsCrm2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "DynamicsCrm",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://operations-sabaacceptance.crm4.dynamics.com/",
+					"authenticationType": "AADServicePrincipal",
+					"servicePrincipalId": "[parameters('DynamicsCrm2_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "[parameters('DynamicsCrm2_servicePrincipalCredential')]"
+					},
+					"servicePrincipalCredentialType": "ServicePrincipalKey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DynamicsCrmoffice365')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "DynamicsCrm",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://sabaacceptance.sandbox.operations.dynamics.com/",
+					"authenticationType": "Office365",
+					"username": "[parameters('DynamicsCrmoffice365_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('DynamicsCrmoffice365_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/OData1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "OData",
+				"typeProperties": {
+					"url": "[parameters('OData1_properties_typeProperties_url')]",
+					"authenticationType": "AadServicePrincipal",
+					"tenant": "[parameters('OData1_properties_typeProperties_tenant')]",
+					"aadResourceId": "[parameters('OData1_properties_typeProperties_aadResourceId')]",
+					"aadServicePrincipalCredentialType": "ServicePrincipalKey",
+					"servicePrincipalId": "[parameters('OData1_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('OData1_servicePrincipalKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ODataPROD')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "OData",
+				"typeProperties": {
+					"url": "[parameters('ODataPROD_properties_typeProperties_url')]",
+					"authenticationType": "AadServicePrincipal",
+					"tenant": "[parameters('ODataPROD_properties_typeProperties_tenant')]",
+					"aadResourceId": "[parameters('ODataPROD_properties_typeProperties_aadResourceId')]",
+					"aadServicePrincipalCredentialType": "ServicePrincipalKey",
+					"servicePrincipalId": "[parameters('ODataPROD_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('ODataPROD_servicePrincipalKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

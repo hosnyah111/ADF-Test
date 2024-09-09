@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsCrm2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "DynamicsCrm",
+		"typeProperties": {
+			"deploymentType": "Online",
+			"serviceUri": "https://operations-sabaacceptance.crm4.dynamics.com/",
+			"authenticationType": "AADServicePrincipal",
+			"servicePrincipalId": "b1f6d810-b9b9-457c-8629-9adcfaf81f6e",
+			"servicePrincipalCredentialType": "ServicePrincipalKey",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDUwMTY4MzI2LUQ4N0ItNDUyQy1CQzU4LUM3NjBCRkVBOTk3OF9mNDFhNjQ3Ny04MDY3LTQzNGItYWIwYy1iOGY0OGMxOWU3OGIiDQp9"
+		}
+	}
+}

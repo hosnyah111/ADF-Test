@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsEntity1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dynamics20240724",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": "CustomersV3"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

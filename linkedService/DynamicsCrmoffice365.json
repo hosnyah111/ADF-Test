@@ -1,0 +1,15 @@
+{
+	"name": "DynamicsCrmoffice365",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "DynamicsCrm",
+		"typeProperties": {
+			"deploymentType": "Online",
+			"serviceUri": "https://sabaacceptance.sandbox.operations.dynamics.com/",
+			"authenticationType": "Office365",
+			"username": "Saba_Guset@sabamedical.com",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDUwMTY4MzI2LUQ4N0ItNDUyQy1CQzU4LUM3NjBCRkVBOTk3OF81MDkyM2E0Mi1mNDI2LTRlNGYtYTc4MS1mYzU1ZTRlMWUwNTciDQp9"
+		}
+	}
+}

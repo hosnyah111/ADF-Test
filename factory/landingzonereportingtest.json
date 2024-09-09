@@ -1,0 +1,9 @@
+{
+	"name": "landingzonereportingtest",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cb765e87-5975-4662-8902-679b630b0323",
+		"tenantId": "e7d2b9fd-262e-46b0-8c4d-a3f0ab0b5d5b"
+	}
+}

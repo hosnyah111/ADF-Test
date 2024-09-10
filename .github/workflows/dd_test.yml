@@ -1,10 +1,39 @@
 name: Deploy ADF
+run-name: Deploy ${{ inputs.data_factory }}
 
 on:
-    push:
-        branches:
-        - main
-
+  workflow_call:
+    inputs:
+      resource_group:
+        description: 'Name of resource group that contains the ADF'
+        required: true
+        default: ${{ vars.RG_DEV_NAME }}
+        type: string
+      data_factory:
+        description: 'Name of ADF'
+        required: true
+        default: ${{ vars.DF_NAME }}
+        type: string
+      pause_triggers:
+        description: 'Pause all triggers before publishing.'
+        required: false
+        default: false
+        type: boolean
+      overwrite_references:
+        description: 'Use env_mappings.json to overwrite environment specific references.'
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      client_id:
+        description: 'Client ID of the SPN used to login to azure using OIDC'
+        required: true
+      tenant_id:
+        description: 'Azure Active Directory Tenant ID'
+        required: true
+      subscription_id:
+        description: 'Subscription ID of the subscription containing the ADF'
+        required: true
 permissions:
   id-token: write
   contents: read
@@ -15,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Pause all triggers
-        if: false
+        if: ${{ inputs.pause_triggers }}
         run: |
           echo "Pausing all triggers"
           for file in ./trigger/*
@@ -29,9 +58,9 @@ jobs:
         uses: Azure/data-factory-export-action@v1.2.1
         with:
           path: ./
-          id: /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ vars.RG_DEV_NAME }}/providers/Microsoft.DataFactory/factories/${{ vars.DF_NAME }}
+          id: /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ inputs.resource_group }}/providers/Microsoft.DataFactory/factories/${{ inputs.data_factory }}
       - name: Overwrite references in ARM Template
-        if: false
+        if: ${{ inputs.overwrite_references }}
         run: |
           echo "Start overwriting references in ARMTemplateForFactory.json and ARMTemplateParametersForFactory.json using the mappings in env_mappings.json"
           jq -c 'to_entries[]' env_mappings.json | while read line; do 
@@ -61,6 +90,6 @@ jobs:
       - name: Deploy resources
         uses: Azure/data-factory-deploy-action@v1.2.0
         with:
-          resourceGroupName: ${{ vars.RG_DEV_NAME }}
-          dataFactoryName: ${{ vars.DF_NAME }}
+          resourceGroupName: ${{ inputs.resource_group }}
+          dataFactoryName: ${{ inputs.data_factory }}
           armTemplateFile: ARMTemplateForFactory.json

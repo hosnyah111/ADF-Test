@@ -11,7 +11,7 @@ jobs:
     steps:      
       - uses: actions/checkout@v3
       - name: Validate Data Factory resources
-        uses: Azure/data-factory-validate-action@v1.1.5
+        uses: Azure/data-factory-validate-action@v1.1.6
         with:
           path: ./
           id: /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ vars.RG_DEV_NAME }}/providers/Microsoft.DataFactory/factories/${{ vars.DF_NAME }}

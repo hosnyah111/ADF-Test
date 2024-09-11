@@ -47,7 +47,8 @@ jobs:
         with:
           name: adf-artifact
           path: ${{ steps.export.outputs.arm-template-directory }}
-          if-no-files-found: error          
+          if-no-files-found: error    
+                
       - name: Copy ARM Template to root
         run: cp -a armTemplate/. . 
       - name: AZ OIDC login

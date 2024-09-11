@@ -50,13 +50,13 @@ jobs:
           if-no-files-found: error    
       - name: Copy ARM Template to root
         run: cp -a armTemplate/. . 
-    #   - name: AZ OIDC login
-    #     uses: azure/login@v1
-    #     with:
-    #         client-id: ${{ secrets.CLIENT_ID }}
-    #         tenant-id: ${{ secrets.TENENT_ID }}
-    #         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    #         enable-AzPSSession: true      
+      - name: AZ OIDC login
+        uses: azure/login@v1
+        with:
+            client-id: ${{ secrets.CLIENT_ID }}
+            tenant-id: ${{ secrets.TENENT_ID }}
+            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            enable-AzPSSession: true      
       - name: Add datafactory extension to AZ CLI
         run: az extension add --name datafactory
       - name: Deploy resources
